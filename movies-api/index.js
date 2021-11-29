@@ -5,10 +5,20 @@ import genresRouter from './api/genres';
 import './db';
 import './seedData'
 import usersRouter from './api/users';
+import session from 'express-session';
+import authenticate from './authenticate';
+
 
 dotenv.config();
 
 const app = express();
+
+//session middleware
+app.use(session({
+  secret: 'ilikecake',
+  resave: true,
+  saveUninitialized: true
+}));
 
 const errHandler = (err, req, res, next) => {
   /* if the error in development then send stack trace to display whole error,
@@ -19,7 +29,8 @@ const errHandler = (err, req, res, next) => {
   res.status(500).send(`Hey!! You caught the error 👍👍. Here's the details: ${err.stack} `);
 };
 
-
+//update /api/Movie route
+app.use('/api/movies', authenticate, moviesRouter);
 
 app.use(express.json());
 
