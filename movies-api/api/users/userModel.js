@@ -11,15 +11,12 @@ const Schema = mongoose.Schema;
 
 
 
-const MovieSchema = new Schema({
-    id: Number,
-    title: String
-  });
+
   
   const UserSchema = new Schema({
     username: { type: String, unique: true, required: true},
     password: {type: String, required: true },
-    favourites: [MovieSchema]
+    favourites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movies'}]
   });
 
 
