@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
-import { PublicPage, Movies, Profile, HomePage } from "./pages";
+import { PublicPage, Movies, Profile,  } from "./pages";
 import LoginPage from "./loginPage";
+import HomePage from "./homePage";
 import AuthProvider from "./authContext";
 import PrivateRoute from "./privateRoute";
 import AuthHeader from "./authHeader";
@@ -16,7 +17,7 @@ const App = () => {
         <AuthHeader />
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/homePage">Home</Link>
           </li>
           <li>
             <Link to="/public">Public</Link>
@@ -31,7 +32,7 @@ const App = () => {
         <MovieProvider>
         <Switch>
           <Route path="/public" component={PublicPage} />
-          <Route exact path="/" component={HomePage} />
+          <Route path="/homePage" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignUpPage} />
           <PrivateRoute path="/movies" component={Movies} />
