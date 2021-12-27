@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext} from 'react';
 import { MoviesContext } from './moviesContext';
+import "./homePage.css";
 //import {getMovies} from '../api/tmdb-api';
 
 
